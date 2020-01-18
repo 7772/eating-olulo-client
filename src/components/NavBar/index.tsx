@@ -33,6 +33,9 @@ const NavBar = ({}) => {
             <NavItem>
               <NavLink href="/meal-tikets-prev">지난 티켓 보기</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/store/register">맛집 등록하기</NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
