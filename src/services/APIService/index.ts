@@ -1,4 +1,5 @@
 import {LocalStorageService} from "..";
+import {Camelizer} from '../../utils';
 
 
 const API_BASE_URL = 'http://localhost:8080/api/v1';
@@ -24,7 +25,10 @@ class APIService {
     const response = await fetch(url, params);
     const json = await response.json();
 
-    return {response, json};
+    return {
+      response: response,
+      json: Camelizer.camelizeKeys(json),
+    };
   }
 
   static async post(path: string, body: any, needToken: boolean = false) {
@@ -44,7 +48,10 @@ class APIService {
     const response = await fetch(url, params);
     const json = await response.json();
 
-    return {response, json};
+    return {
+      response: response,
+      json: Camelizer.camelizeKeys(json),
+    };
   }
 
   static async delete(path: string, needToken: boolean = false) {
@@ -63,7 +70,10 @@ class APIService {
     const response = await fetch(url, params);
     const json = await response.json();
 
-    return {response, json};
+    return {
+      response: response,
+      json: Camelizer.camelizeKeys(json),
+    };
   }
 }
 
