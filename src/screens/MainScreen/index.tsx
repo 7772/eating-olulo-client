@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 
-import {NavBar, MealTiketList} from '../../components';
+import {NavBar, MealTiketList, StoreList} from '../../components';
 import {MealTiketsAPI, StoresAPI} from '../../apis';
 
 
@@ -36,10 +36,10 @@ class MainScreen extends Component<any, any> {
 
   async getMealTiketList() {
     try {
-      const result: any = await MealTiketsAPI.getList();
+      const {response, json}: any = await MealTiketsAPI.getList();
       
-      if (result.response.ok) {
-        this.setState({mealTikets: result.json.mealTikets});
+      if (response.ok) {
+        this.setState({mealTikets: json.mealTikets});
       } else {
         // TODO: 401, 422 or some error
       }
@@ -50,11 +50,12 @@ class MainScreen extends Component<any, any> {
 
   render() {
     const {stores, mealTikets} = this.state;
-    
+
     return (
       <Router>
         <div className="App wrapper">
           <NavBar/>
+          <StoreList stores={stores}/>
           <MealTiketList mealTikets={mealTikets}/>
         </div>
       </Router>
