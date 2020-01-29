@@ -8,13 +8,27 @@ import {
   NavLink,
   Button,
 } from 'reactstrap';
+
 import RegisterStoreModal from '../RegisterStoreModal';
+import RegisterMealTiketModal from '../RegisterMealTiketModal';
+import {StoresAPI} from '../../apis';
 
 
 const NavBar = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [stores, setStores] = useState(null);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const onClickRegisterMealTiketModal = async (e: any) => {
+    e.stopPropagation(); 
+
+    const {response, json}: any = await StoresAPI.getList();
+
+    if (response.ok) {
+      setStores(json.stores);
+    }
+  };
 
   return (
     <div>
@@ -23,8 +37,8 @@ const NavBar = ({}) => {
         <NavbarToggler onClick={toggle}/>
         <Nav className="mr-auto" navbar>
           <NavItem>
-            <NavLink href="/meal-tikets/register">
-              <Button color='none'>식사 티켓 만들기</Button>
+            <NavLink href="#" onClick={onClickRegisterMealTiketModal}>
+              <RegisterMealTiketModal buttonLabel={'식사 티켓 만들기'} stores={stores}/>
             </NavLink>
           </NavItem>
           <NavItem>

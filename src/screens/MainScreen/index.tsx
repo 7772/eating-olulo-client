@@ -9,6 +9,8 @@ class MainScreen extends Component<any, any> {
   constructor(props: any) {
     super(props);
 
+    this.getStoreList = this.getStoreList.bind(this);
+
     this.state = {
       stores: [],
       mealTikets: [],
@@ -37,7 +39,7 @@ class MainScreen extends Component<any, any> {
   async getMealTiketList() {
     try {
       const {response, json}: any = await MealTiketsAPI.getList();
-      
+
       if (response.ok) {
         this.setState({mealTikets: json.mealTikets});
       } else {

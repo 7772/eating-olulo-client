@@ -10,7 +10,7 @@ import {
   InputGroupAddon,
   InputGroupText
 } from 'reactstrap';
-import { StoresAPI } from '../../apis';
+import {StoresAPI} from '../../apis';
 
 
 const RegisterStoreModal = ({buttonLabel, className}: any) => {

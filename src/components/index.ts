@@ -1,14 +1,18 @@
 import NavBar from './NavBar';
 import MealTiket from './MealTiket';
 import MealTiketList from './MealTiketList';
-import RegisterStoreModal from './RegisterStoreModal';
 import StoreList from './StoreList';
+
+import RegisterStoreModal from './RegisterStoreModal';
+import RegisterMealTiketModal from './RegisterMealTiketModal';
 
 
 export {
   NavBar,
   MealTiket,
   MealTiketList,
-  RegisterStoreModal,
   StoreList,
+  // Modals
+  RegisterStoreModal,
+  RegisterMealTiketModal,
 };
