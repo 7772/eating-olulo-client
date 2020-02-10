@@ -2,11 +2,14 @@ import {LocalStorageService} from "..";
 import {Camelizer} from '../../utils';
 
 
-const API_BASE_URL = 'http://localhost:8080/api/v1';
+const API_URL = {
+  local: 'http://localhost:8080/api/v1',
+  prod: 'http://ec2-13-125-213-214.ap-northeast-2.compute.amazonaws.com:8080/api/v1',
+};
 
 class APIService {
   static get baseURL() {
-    return API_BASE_URL;
+    return API_URL.local;
   }
 
   static async get(path: string, needToken: boolean = false) {
