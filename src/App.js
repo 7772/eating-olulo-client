@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact component={Screens.MainScreen}/>
+        <Route path="/stores" exact component={Screens.StoreScreen}/>
       </Switch>
     </Router>
   );

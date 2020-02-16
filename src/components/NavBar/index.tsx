@@ -46,6 +46,11 @@ const NavBar = ({}) => {
               <RegisterStoreModal buttonLabel={'맛집 등록하기'}/>
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink href="/stores">
+              <Button color='none'>맛집 관리</Button>
+            </NavLink>
+          </NavItem>
         </Nav>
       </Navbar>
     </div>
