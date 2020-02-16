@@ -1,6 +1,6 @@
 import React from 'react';
 import {Jumbotron, Button} from 'reactstrap';
-import { DateHelper } from '../../helpers';
+import {DateHelper} from '../../helpers';
 
 
 const MealTiket = ({mealTiket}: any) => {

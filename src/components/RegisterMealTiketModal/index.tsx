@@ -32,7 +32,7 @@ const RegisterMealTiketModal = ({
     try {
       const params = {
         storeId: store.id,
-        endTime: DateHelper.getFullDateByTime(endTime),
+        endTime: DateHelper.getFullDateByTime(endTime + ':00'),
       };
 
       const {response, json}: any = await MealTiketsAPI.register(params);
