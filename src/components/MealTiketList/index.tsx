@@ -11,7 +11,8 @@ const MealTiketList = ({mealTikets = []}: any) => {
       );
     })
   ) : (
-    <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '30vh'}}>
+    // TODO:: Alert 컴포넌트 만들기
+    <div style={{display: 'flex', justifyContent:'center', alignItems:'center', height: '30vh'}}>
       <Alert className={'container'} color={'warning'}>
         오늘은 아무도 안시켜먹나봐요..
       </Alert>
