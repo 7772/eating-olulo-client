@@ -6,7 +6,7 @@ class LocalStorageService {
   static getAccessToken(): string | null {
     const accessToken = localStorage.getItem('accessToken');
 
-    if (accessToken && accessToken === '') {
+    if (accessToken && accessToken !== '') {
       return JSON.parse(accessToken);
     } else {
       return null;

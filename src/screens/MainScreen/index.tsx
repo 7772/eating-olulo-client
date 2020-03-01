@@ -3,6 +3,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 
 import {NavBar, MealTiketList, StoreList} from '../../components';
 import {MealTiketsAPI, StoresAPI} from '../../apis';
+import {LocalStorageService, NavigationService} from '../../services';
 
 
 class MainScreen extends Component<any, any> {
@@ -18,8 +19,20 @@ class MainScreen extends Component<any, any> {
   }
 
   componentDidMount() {
+    this.checkAccessToken();
+  }
+
+  checkAccessToken() {
+    if (!LocalStorageService.hasAccessToken()) {
+      NavigationService.navigate('/login');
+    } else {
+      this.requestSession();
+    }
+  }
+
+  requestSession() {
+    alert('get session');
     this.getStoreList();
-    this.getMealTiketList();
   }
 
   async getStoreList() {

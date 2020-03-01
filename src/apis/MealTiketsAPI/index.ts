@@ -5,7 +5,7 @@ class MealTiketsAPI {
   static async getList() {
     const path = '/meal-tikets';
 
-    return APIService.get(path, false);
+    return APIService.get(path, true);
   }
 
   static async register(params: any) {
@@ -15,7 +15,7 @@ class MealTiketsAPI {
       end_time: params.endTime, 
     };
 
-    return APIService.post(path, body, false);
+    return APIService.post(path, body, true);
   }
 }
 

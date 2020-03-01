@@ -5,7 +5,7 @@ class StoresAPI {
   static async getList() {
     const path = '/stores';
 
-    return APIService.get(path, false);
+    return APIService.get(path, true);
   }
 
   static async register(params: any) {
@@ -15,7 +15,7 @@ class StoresAPI {
       phone_number: params.phoneNumber,
     };
 
-    return APIService.post(path, body, false);
+    return APIService.post(path, body, true);
   }
 }
 
