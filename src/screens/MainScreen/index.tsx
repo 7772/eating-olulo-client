@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
 
 import {NavBar, MealTiketList, StoreList} from '../../components';
-import {MealTiketsAPI, StoresAPI} from '../../apis';
+import {MealTiketsAPI, StoresAPI, UserAPI} from '../../apis';
 import {LocalStorageService, NavigationService} from '../../services';
 
 
@@ -30,9 +30,20 @@ class MainScreen extends Component<any, any> {
     }
   }
 
-  requestSession() {
-    alert('get session');
-    this.getStoreList();
+  async requestSession() {
+    try {
+     const {response, json} = await UserAPI.me();
+
+      if (response.ok) {
+        this.getStoreList();
+        this.getMealTiketList();
+      } else {
+        alert('다시 로그인해주세요.');
+        NavigationService.navigate('/login');
+      } 
+    } catch (error) {
+      alert(error.message);  
+    }
   }
 
   async getStoreList() {
