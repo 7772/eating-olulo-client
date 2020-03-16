@@ -4,7 +4,7 @@ import * as User from './User';
 
 
 const reducers = combineReducers({
-  ...User.reducer,
+  User: User.reducer,
 });
 
 export {

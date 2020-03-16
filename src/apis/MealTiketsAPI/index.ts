@@ -17,6 +17,16 @@ class MealTiketsAPI {
 
     return APIService.post(path, body, true);
   }
+
+  static async addUser(params: any) {
+    const path = '/meal-tikets/add-user';
+    const body = {
+      user_id: params.userId,
+      meal_tiket_id: params.mealTiketId,
+    };
+
+    return APIService.post(path, body, true);
+  }
 }
 
 

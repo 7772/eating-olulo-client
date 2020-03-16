@@ -1,9 +1,15 @@
 import React from 'react';
 import {Jumbotron, Button} from 'reactstrap';
+import {useSelector} from 'react-redux'
+
 import {DateHelper} from '../../helpers';
+import { MealTiketsAPI } from '../../apis';
+import { NavigationService } from '../../services';
 
 
 const MealTiket = ({mealTiket}: any) => {
+  const userId = useSelector((state: any) => state.User.get('id'));
+
   const store = mealTiket.store;
   const startTime = mealTiket.startTime;
   const endTime = mealTiket.endTime;
@@ -15,8 +21,25 @@ const MealTiket = ({mealTiket}: any) => {
     return DateHelper.minToHourMinFormat(min);
   };
 
-  const onClickJoinIn = () => {
-    alert('TODO: 참여하기');
+  const onClickJoinIn = async () => {
+    const mealTiketId = mealTiket.id;
+    const params = {
+      userId: userId,
+      mealTiketId: mealTiketId,
+    };
+
+    try {
+      const {response, json}: any = await MealTiketsAPI.addUser(params);
+
+      if (response.ok) {
+        alert('등록 성공했습니다.');
+        NavigationService.reload();
+      } else {
+        // TODO:: 422 or 401
+      }
+    } catch (error) {
+      console.log(error); 
+    }
   };
 
   return (

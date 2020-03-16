@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router} from "react-router-dom";
+import {connect, DispatchProp} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import {NavBar, MealTiketList, StoreList} from '../../components';
 import {MealTiketsAPI, StoresAPI, UserAPI} from '../../apis';
 import {LocalStorageService, NavigationService} from '../../services';
+import {User} from '../../redux';
 
 
 class MainScreen extends Component<any, any> {
@@ -32,9 +35,10 @@ class MainScreen extends Component<any, any> {
 
   async requestSession() {
     try {
-     const {response, json} = await UserAPI.me();
+     const {response, json}: any = await UserAPI.me();
 
       if (response.ok) {
+        this.props.setUser(json.user);
         this.getStoreList();
         this.getMealTiketList();
       } else {
@@ -89,5 +93,10 @@ class MainScreen extends Component<any, any> {
   }
 }
 
+const mapDispatchToProps = (dispatch: any) => ({
+  // User
+  setUser: bindActionCreators(User.setUser, dispatch),
+});
 
-export default MainScreen;
+
+export default connect(null, mapDispatchToProps)(MainScreen);
