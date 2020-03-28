@@ -35,7 +35,10 @@ const MealTiket = ({mealTiket}: any) => {
         alert('등록 성공했습니다.');
         NavigationService.reload();
       } else {
-        // TODO:: 422 or 401
+        if (response.status === 422) {
+          alert(json.message);
+        }
+        // TODO:: 401 or else
       }
     } catch (error) {
       console.log(error); 

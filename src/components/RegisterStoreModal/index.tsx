@@ -11,6 +11,7 @@ import {
   InputGroupText
 } from 'reactstrap';
 import {StoresAPI} from '../../apis';
+import {NavigationService} from '../../services';
 
 
 const RegisterStoreModal = ({buttonLabel, className}: any) => {
@@ -47,6 +48,7 @@ const RegisterStoreModal = ({buttonLabel, className}: any) => {
 
       if (response.ok) {
         alert('등록 성공했습니다.');
+        NavigationService.reload();
       } else {
         alert(json.message);
       }

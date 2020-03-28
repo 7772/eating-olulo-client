@@ -16,6 +16,7 @@ import {
 
 import {MealTiketsAPI} from '../../apis';
 import {DateHelper} from '../../helpers';
+import {NavigationService} from '../../services';
 
 
 const RegisterMealTiketModal = ({
@@ -39,8 +40,8 @@ const RegisterMealTiketModal = ({
 
       if (response.ok) {
         alert('등록 성공했습니다.');
-
         toggle();
+        NavigationService.reload();
       } else {
         alert(json.message);
       }     
