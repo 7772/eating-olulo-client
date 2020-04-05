@@ -1,5 +1,6 @@
 import React from 'react';
 import {Table, Alert} from 'reactstrap';
+import StoreDetailModal from './StoreDetailModal';
 
 
 const StoreList = ({
@@ -20,7 +21,7 @@ const StoreList = ({
           stores.map((store: any, index: number) => (
             <tr key={index}>
               <th scope="row">{index + 1}</th>
-              <td>{store.id}</td>
+              <td><StoreDetailModal store={store}/></td>
               <td>{store.name}</td>
               <td>{store.phoneNumber}</td>
             </tr>
